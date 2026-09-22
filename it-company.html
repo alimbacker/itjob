@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fieldstone IT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F1; --ink:#14181C; --indigo:#2B3A67; --amber:#E8A33D; --grey:#6B7280; --line:#DAD7CE;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --paper:#14181C; --ink:#F2F1EC; --line:#2B2F35; --grey:#9CA3AF; } }
+  :root[data-theme="dark"]{ --paper:#14181C; --ink:#F2F1EC; --line:#2B2F35; --grey:#9CA3AF; }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); height:100%;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  header{position:sticky; top:env(safe-area-inset-top,0px); background:var(--paper); border-bottom:1px solid var(--line); z-index:10;}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .logo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; letter-spacing:-0.01em;}
+  .logo span{color:var(--indigo);}
+  nav ul{display:flex; gap:32px; list-style:none; margin:0; padding:0; font-size:0.95rem;}
+  nav ul a{text-decoration:none; opacity:0.8;}
+  nav ul a:hover{opacity:1;}
+  .btn{display:inline-block; background:var(--indigo); color:#fff; padding:10px 20px; border-radius:2px; text-decoration:none; font-weight:600; font-size:0.9rem; border:1px solid var(--indigo);}
+  .btn:hover{background:transparent; color:var(--indigo);}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn.ghost:hover{border-color:var(--ink);}
+
+  .hero{padding:96px 0 72px; display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:end;}
+  .hero h1{font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,5vw,3.6rem); line-height:1.05; margin:0 0 20px; font-weight:600; letter-spacing:-0.02em;}
+  .hero p{color:var(--grey); font-size:1.05rem; max-width:46ch; margin:0 0 28px;}
+  .hero .cta{display:flex; gap:14px;}
+  .hero-figures{border-left:1px solid var(--line); padding-left:28px; display:flex; flex-direction:column; gap:22px;}
+  .fig b{font-family:'Space Grotesk',sans-serif; font-size:2rem; display:block;}
+  .fig span{color:var(--grey); font-size:0.88rem;}
+
+  section{padding:64px 0; border-top:1px solid var(--line);}
+  .kicker{color:var(--indigo); font-weight:600; font-size:0.85rem; margin:0 0 8px;}
+  h2{font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:600; margin:0 0 36px; letter-spacing:-0.01em; max-width:34ch;}
+
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+  .service{padding:24px 24px 24px 0; border-right:1px solid var(--line);}
+  .service:last-child{border-right:none;}
+  .service h3{font-size:1.05rem; margin:0 0 10px; font-weight:600;}
+  .service p{color:var(--grey); font-size:0.92rem; margin:0;}
+
+  .process{display:flex; flex-direction:column;}
+  .step{display:grid; grid-template-columns:60px 1fr; gap:20px; padding:20px 0; border-top:1px solid var(--line);}
+  .step:first-child{border-top:none;}
+  .step .num{font-family:'Space Grotesk',sans-serif; color:var(--indigo); font-weight:600;}
+  .step h3{margin:0 0 6px; font-size:1.05rem; font-weight:600;}
+  .step p{margin:0; color:var(--grey); font-size:0.92rem; max-width:56ch;}
+
+  .quote{font-family:'Space Grotesk',sans-serif; font-size:1.4rem; font-weight:500; max-width:60ch; line-height:1.4; margin:0 0 16px;}
+  .quote-attr{color:var(--grey); font-size:0.9rem;}
+
+  .cta-band{text-align:left; background:var(--indigo); color:#fff; border-top:none;}
+  .cta-band h2{color:#fff;}
+  .cta-band p{color:#D9DEEC; max-width:50ch; margin:0 0 28px;}
+  .cta-band .btn{background:#fff; color:var(--indigo); border-color:#fff;}
+  .cta-band .btn:hover{background:transparent; color:#fff;}
+
+  footer{border-top:1px solid var(--line); padding:32px 0; color:var(--grey); font-size:0.85rem; display:flex; justify-content:space-between;}
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+    .hero{grid-template-columns:1fr; padding-top:64px;}
+    .hero-figures{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:20px; flex-direction:row; flex-wrap:wrap;}
+    .services{grid-template-columns:1fr;}
+    .service{border-right:none; border-top:1px solid var(--line); padding:20px 0;}
+    .service:first-child{border-top:none;}
+    footer{flex-direction:column; gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Fieldstone<span>IT</span></div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#work">Results</a></li>
+    </ul>
+    <a class="btn ghost" href="#contact">Talk to us</a>
+  </nav>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <h1>IT that stays out of your way, until you need it to save the day.</h1>
+      <p>We manage infrastructure, security, and support for growing companies who'd rather build their business than babysit servers.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Book a network audit</a>
+        <a class="btn ghost" href="#services">See what we cover</a>
+      </div>
+    </div>
+    <div class="hero-figures">
+      <div class="fig"><b>99.98%</b><span>uptime across managed clients, trailing 12 months</span></div>
+      <div class="fig"><b>&lt;15 min</b><span>average response time on priority tickets</span></div>
+      <div class="fig"><b>60+</b><span>businesses supported since 2014</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <p class="kicker">Services</p>
+    <h2>Three areas, one point of contact.</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Managed IT</h3>
+        <p>Monitoring, patching, and helpdesk support for your whole fleet, handled before problems reach your team.</p>
+      </div>
+      <div class="service">
+        <h3>Security &amp; compliance</h3>
+        <p>Endpoint protection, backups, and audit-ready documentation for SOC 2, HIPAA, and similar frameworks.</p>
+      </div>
+      <div class="service">
+        <h3>Cloud &amp; infrastructure</h3>
+        <p>Migrations, cost reviews, and architecture support across AWS, Azure, and Google Cloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <p class="kicker">How we start</p>
+    <h2>From first call to full coverage in three steps.</h2>
+    <div class="process">
+      <div class="step">
+        <div class="num">01</div>
+        <div><h3>Audit</h3><p>We map your current systems, risks, and gaps, at no cost, in about a week.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div><h3>Plan</h3><p>You get a fixed-scope proposal with pricing, priorities, and a rollout timeline.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div><h3>Onboard</h3><p>We take over monitoring and support, usually within two weeks of sign-off.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="quote">"They found a misconfigured backup that would've cost us a week of work if our office had flooded a month later. That's the kind of thing you don't know to ask about."</p>
+    <p class="quote-attr">— Operations lead, 40-person logistics firm</p>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>Ready for IT you don't think about?</h2>
+    <p>Tell us about your setup and we'll get back to you within one business day with next steps.</p>
+    <a class="btn" href="mailto:hello@fieldstoneit.example">hello@fieldstoneit.example</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Fieldstone IT</span>
+  <span>Madurai · Remote-friendly</span>
+</footer>
+
+</body>
+</html>
